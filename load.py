@@ -1,5 +1,5 @@
 from owlready2 import *
-from data3 import *
+from data import *
 
 onto = get_ontology("/Users/kda/Documents/Интеллектуальные информационные системы/Модель компетенций/empty.rdf").load()
 for competency in competencies:
