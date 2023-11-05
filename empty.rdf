@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.enu.kz/ontologies/curriculum#"
+     xml:base="http://www.enu.kz/ontologies/curriculum"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:curriculum="http://www.enu.kz/ontologies/curriculum"
+     xmlns:curriculum1="http://www.enu.kz/ontologies/curriculum#">
+    <owl:Ontology rdf:about="http://www.enu.kz/ontologies/curriculum">
+        <rdfs:comment>Ontology of curriculum and learning outcomes</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Includes -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#Includes">
+        <owl:inverseOf rdf:resource="http://www.enu.kz/ontologies/curriculum#isPartOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#followBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#followBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.enu.kz/ontologies/curriculum#goesAfter"/>
+        <owl:inverseOf rdf:resource="http://www.enu.kz/ontologies/curriculum#precede"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#goesAfter -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#goesAfter">
+        <owl:inverseOf rdf:resource="http://www.enu.kz/ontologies/curriculum#goesBefore"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#isPartOf"/>
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#goesAfter"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#goesBefore -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#goesBefore">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#isPartOf"/>
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#goesBefore"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#isPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Item"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#precede -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#precede">
+        <rdfs:subPropertyOf rdf:resource="http://www.enu.kz/ontologies/curriculum#goesBefore"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#providesStudy -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#providesStudy">
+        <owl:inverseOf rdf:resource="http://www.enu.kz/ontologies/curriculum#studiedDuring"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#requiredBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#requiredBy">
+        <owl:inverseOf rdf:resource="http://www.enu.kz/ontologies/curriculum#requires"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#requiredBy"/>
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#isPartOf"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment>The skill is necessary for another one</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#requires -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#requires">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#requires"/>
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#Includes"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment>The skill requires (depends on) another one</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#studiedDuring -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#studiedDuring">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#train -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#train">
+        <owl:inverseOf rdf:resource="http://www.enu.kz/ontologies/curriculum#trainedBy"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#train"/>
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#Includes"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#trainedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.enu.kz/ontologies/curriculum#trainedBy">
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <rdfs:range rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#trainedBy"/>
+            <rdf:Description rdf:about="http://www.enu.kz/ontologies/curriculum#isPartOf"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#component -->
+
+    <owl:DatatypeProperty rdf:about="http://www.enu.kz/ontologies/curriculum#component">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#credits -->
+
+    <owl:DatatypeProperty rdf:about="http://www.enu.kz/ontologies/curriculum#credits">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#cycle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.enu.kz/ontologies/curriculum#cycle">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#exam -->
+
+    <owl:DatatypeProperty rdf:about="http://www.enu.kz/ontologies/curriculum#exam">
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.enu.kz/ontologies/curriculum#name">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.enu.kz/ontologies/curriculum#type">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.enu.kz/ontologies/curriculum#Skill"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#AcademicYear -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#AcademicYear">
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Container -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#Container"/>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Course -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#Course">
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#EducationalProgram -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#EducationalProgram">
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Item -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#Item"/>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#Semester">
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#TimeInterval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Skill -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#Skill">
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#TimeInterval -->
+
+    <owl:Class rdf:about="http://www.enu.kz/ontologies/curriculum#TimeInterval">
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Container"/>
+        <rdfs:subClassOf rdf:resource="http://www.enu.kz/ontologies/curriculum#Item"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#AcademicYear_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#AcademicYear_1">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_2"/>
+        <rdfs:label xml:lang="en">Academic Year 1</rdfs:label>
+        <rdfs:label xml:lang="ru">Курс 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#AcademicYear_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#AcademicYear_2">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_3"/>
+        <rdfs:label xml:lang="en">Academic Year 2</rdfs:label>
+        <rdfs:label xml:lang="ru">Курс 2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#AcademicYear_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#AcademicYear_3">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_4"/>
+        <rdfs:label xml:lang="en">Academic Year 3</rdfs:label>
+        <rdfs:label xml:lang="ru">Курс 3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#AcademicYear_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#AcademicYear_4">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear"/>
+        <rdfs:label xml:lang="en">Academic Year 4</rdfs:label>
+        <rdfs:label xml:lang="ru">Курс 4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_0">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_1"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_1"/>
+        <rdfs:label xml:lang="en">Semester 0</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 0</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_1">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_2"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_1"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_2"/>
+        <rdfs:label xml:lang="en">Semester 1</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_2">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_3"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_1"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_3"/>
+        <rdfs:label xml:lang="en">Semester 2</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_3">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_4"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_2"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_4"/>
+        <rdfs:label xml:lang="en">Semester 3</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_4">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_5"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_2"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_5"/>
+        <rdfs:label xml:lang="en">Semester 4</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_5">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_6"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_3"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_6"/>
+        <rdfs:label xml:lang="en">Semester 5</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_6">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <goesBefore rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_7"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_3"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_7"/>
+        <rdfs:label xml:lang="en">Semester 6</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_7">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_4"/>
+        <precede rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester_8"/>
+        <rdfs:label xml:lang="en">Semester 7</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.enu.kz/ontologies/curriculum#Semester_8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.enu.kz/ontologies/curriculum#Semester_8">
+        <rdf:type rdf:resource="http://www.enu.kz/ontologies/curriculum#Semester"/>
+        <isPartOf rdf:resource="http://www.enu.kz/ontologies/curriculum#AcademicYear_4"/>
+        <rdfs:label xml:lang="en">Semester 8</rdfs:label>
+        <rdfs:label xml:lang="ru">Семестр 8</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
