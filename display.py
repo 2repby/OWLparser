@@ -1,5 +1,5 @@
 from owlready2 import *
-onto = get_ontology("/Users/kda/Documents/Интеллектуальные информационные системы/Модель компетенций/competencies2.rdf").load()
+onto = get_ontology("competencies2.rdf").load()
 sync_reasoner(infer_property_values=True)
 semesters = list(default_world.sparql("""
            SELECT ?s ?l
@@ -14,20 +14,19 @@ for semester in semesters:
     print(semester[1])
     print('=======================================================================')
     courses = list(default_world.sparql("""
-               SELECT ?c ?l ?e
+               SELECT ?c ?l
                WHERE {?c <http://www.enu.kz/ontologies/curriculum#studiedDuring> ?s .
                ?c rdfs:label ?l.
-               ?c <http://www.enu.kz/ontologies/curriculum#exam> ?e.
+              
                ?s rdfs:label '""" + semester[0].label[0] + """'.
                FILTER(LANG(?l) = "" || LANGMATCHES(LANG(?l), "en")).
-               FILTER(LANG(?e) = "" || LANGMATCHES(LANG(?e), "en"))
                }
                
                 ORDER BY ?c
         """))
     for course in courses:
         print('-----------------------------------------------------------------------')
-        print('Course:', course[1], ' Credits:', course[0].credits, ' Evaluation:', course[2])
+        print('Course:', course[1])
         print('-----------------------------------------------------------------------')
         print('Trained competencies:')
         competencies = list(default_world.sparql("""

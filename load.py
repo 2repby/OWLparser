@@ -1,7 +1,7 @@
 from owlready2 import *
 from data import *
 
-onto = get_ontology("/Users/kda/Documents/Интеллектуальные информационные системы/Модель компетенций/empty.rdf").load()
+onto = get_ontology("empty.rdf").load()
 for competency in competencies:
     skill = onto.Skill(competency[0])
     skill.label = []
@@ -44,7 +44,7 @@ for course in set(map(lambda x: x[0], discipline_competency_mapping)):
 # sync_reasoner(infer_property_values = True)
 
 onto.save(
-        file="/Users/kda/Documents/Интеллектуальные информационные системы/Модель компетенций/Competencies2.rdf")
+        file="Competencies2.rdf")
 
 for course in onto.Course.instances():
     print('Курс:', course.label[0], 'Объем:', course.credits, 'Контроль:', course.exam[0])
