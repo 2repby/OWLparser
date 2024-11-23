@@ -103,7 +103,7 @@ competencies = [
     ["Skill_3.2.2.1", [("Фреймворки для бекенда", "ru"), ("Backend Frameworks", "en")], "Skill_3.2.2"],
     ["Skill_3.2.2.2", [("RESTful API", "ru"), ("RESTful API", "en")], "Skill_3.2.2"],
     ["Skill_3.2.2.3", [("Базы данных", "ru"), ("Databases", "en")], "Skill_3.2.2"],
-    ["Skill_3.2.2.4", [("ORM", "ру"), ("Object-Relational Mapping (ORM)", "en")], "Skill_3.2.2"],
+    ["Skill_3.2.2.4", [("ORM", "ru"), ("Object-Relational Mapping (ORM)", "en")], "Skill_3.2.2"],
     ["Skill_3.2.2.5", [("Миграции данных", "ru"), ("Data Migrations", "en")], "Skill_3.2.2"],
     ["Skill_3.2.2.6", [("NoSQL базы данных", "ru"), ("NoSQL Databases", "en")], "Skill_3.2.2"],
     # ... (previous elements)
